@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="appAPI.js">
+</head>
+<body>
+    <div class="search">
+        <input id="search" type="search" placeholder="search...">
+    </div>
+<script>
+    const search = document.getElementById('search');
+
+search.addEventListener('click', ProVinCeAPI);
+
+async function ProVinCeAPI() {
+  try {
+    const responseAPI = await fetch('https://online-gateway.ghn.vn/shiip/public-api/master-data/province?=');
+    if (!responseAPI.ok) {
+      throw new Error(`API request failed with status: ${responseAPI.status}`);
+    }
+    
+    const data = await responseAPI.json();
+    console.log('Response Data:', data);
+    
+    // Now you can work with the data here as needed.
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+</script>
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="search">
+        <input id="search" type="search" placeholder="search...">
+        <button id="searchButton">Search</button>
+    </div>
+    <script>
+        const searchButton = document.getElementById('searchButton');
+        const searchInput = document.getElementById('search');
+
+        searchButton.addEventListener('click', ProVinCeAPI);
+
+        async function ProVinCeAPI() {
+            try {
+                const responseAPI = await fetch('https://online-gateway.ghn.vn/shiip/public-api/master-data/province');
+                if (!responseAPI.ok) {
+                    throw new Error(`API request failed with status: ${responseAPI.status}`);
+                }
+
+                const data = await responseAPI.json();
+                console.log('Response Data:', data);
+
+                // Now you can work with the data here as needed.
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+    </script>
+</body>
+</html> -->
